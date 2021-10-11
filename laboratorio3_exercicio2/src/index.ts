@@ -30,3 +30,4 @@ cofre.adicionar(new Moeda(1, 'Um Real'));
 cofre.adicionar(new Moeda(0.5, '50 centavos'));
 cofre.adicionar(new Moeda(0.25, '25 centavos'));
 console.log(cofre.calcularTotal());
+console.log(JSON.stringify(cofre));
