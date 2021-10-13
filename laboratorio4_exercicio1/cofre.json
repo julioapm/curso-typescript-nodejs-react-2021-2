@@ -1,1 +1,20 @@
-{"moedas":[{"valor":1,"nome":"Um Real"},{"valor":1,"nome":"Um Real"}]}
+{
+    "moedas": [
+        {
+            "valor": 1,
+            "nome": "Um Real"
+        },
+        {
+            "valor": 1,
+            "nome": "Um Real"
+        },
+        {
+            "valor": 0.5,
+            "nome": "50 Centavos"
+        },
+        {
+            "valor": 0.5,
+            "nome": "50 Centavos
+        }
+    ]
+}
