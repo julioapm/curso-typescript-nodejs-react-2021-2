@@ -1,4 +1,4 @@
-class Moeda {
+export class Moeda {
     constructor(
         private valor: number,
         private nome: string
@@ -11,7 +11,7 @@ class Moeda {
     }
 }
 
-class Cofrinho {
+export class Cofrinho {
     private moedas: Moeda[] = [];
     adicionar(moeda: Moeda) {
         this.moedas.push(moeda);
@@ -24,10 +24,3 @@ class Cofrinho {
         return total;
     }
 }
-
-let cofre = new Cofrinho();
-cofre.adicionar(new Moeda(1, 'Um Real'));
-cofre.adicionar(new Moeda(0.5, '50 centavos'));
-cofre.adicionar(new Moeda(0.25, '25 centavos'));
-console.log(cofre.calcularTotal());
-console.log(JSON.stringify(cofre));
