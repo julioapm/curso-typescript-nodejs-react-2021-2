@@ -1,5 +1,5 @@
 import { Cofrinho, Moeda } from './entidades';
-import { salvarCofre, lerCofre } from './persistencia';
+import { salvarCofre, lerCofre , lerCofreAsync} from './persistencia';
 
 /*
 const cofre = new Cofrinho();
@@ -15,6 +15,7 @@ salvarCofre(cofre, 'cofre.json', (err) => {
     }
 });
 */
+/*
 lerCofre('cofre.json', (err, cofre) => {
     if (err) {
         console.log('Falha de leitura');
@@ -26,3 +27,16 @@ lerCofre('cofre.json', (err, cofre) => {
         }
     }
 });
+*/
+let ampulheta = true;
+try {
+    let cofre = await lerCofreAsync('cofre.json');
+    ampulheta = false;
+    console.log('Leitura com sucesso');
+    if (cofre != null) {
+        console.log(cofre.calcularTotal());
+    }
+} catch(err) {
+    console.log('Falha de leitura');
+    console.log(err);
+}
