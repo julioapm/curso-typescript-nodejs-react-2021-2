@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import { Pessoa } from './pessoa';
 
 const uri = 'mongodb+srv://dbUser:kil,ji8oku@cluster0.wszic.mongodb.net/meubd?retryWrites=true&w=majority';
@@ -25,9 +25,17 @@ async function main() {
         console.log('Resultado da consulta:');
         console.log(pessoas);
 
+        const resultadoAlteracao = await colecao.updateOne({ _id : new ObjectId('616884326e1a81282ac2a1ee')}, { $set: { idade: 18 } });
+        console.log('Resultado da alteração:');
+        console.log(resultadoAlteracao.modifiedCount);
+
         const numero = await colecao.find({idade: {$lte: 18}}).count();
         console.log('Resultado da consulta:');
         console.log(numero);
+
+        const resultadoExclusao = await colecao.deleteOne({ _id : new ObjectId('61688ef26e1a81282ac2a1ef')});
+        console.log('Resultado da exclusão:');
+        console.log(resultadoExclusao.deletedCount);
 
     } catch (error) {
         console.log('Falha de acesso ao BD:');
