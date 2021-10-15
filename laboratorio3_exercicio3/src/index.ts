@@ -59,7 +59,7 @@ class Cofrinho {
         map.set('25 centavos', 0);
         map.set('10 centavos', 0);
         map.set('5 centavos', 0);
-        map.set('1 centavo', 0);
+       // map.set('1 centavo', 0);
         this.moedas.forEach(moeda => {
             map.set(moeda.nomeDaMoeda, map.get(moeda.nomeDaMoeda)! + 1);
         });
