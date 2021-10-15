@@ -28,9 +28,29 @@ async function main() {
         console.log('Resultado da consulta:');
         console.log(pessoas2);
         */
+        /*
         const numero = await PessoaModel.where('idade').lte(18).countDocuments().exec();
         console.log('Resultado da consulta:');
         console.log(numero);
+        */
+        /*
+        //modificar um documento em memória e salvar no banco
+        const documento = await PessoaModel.findById('6169c1832e17f3fc22b790f8').exec();
+        if (documento != null) {
+            documento.idade = 30;
+            documento.email = 'outro@gmail.com';
+            const documentoAtualizado = await documento.save();
+            console.log('Resultado da alteração:');
+            console.log(documentoAtualizado);
+        }
+        */
+        //remover um documento em memória e salvar no banco
+        const documento = await PessoaModel.findById('6169c1832e17f3fc22b790f8').exec();
+        if (documento != null) {
+            const documentoRemovido = await documento.remove();
+            console.log('Resultado da remoção:');
+            console.log(documentoRemovido);
+        }
     } catch (error) {
         console.log('Falha de acesso ao BD:');
         console.error(error);
