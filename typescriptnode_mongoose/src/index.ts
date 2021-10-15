@@ -2,6 +2,7 @@ import { connect, disconnect } from 'mongoose';
 import { PessoaModel } from './pessoa';
 
 const uri = 'mongodb+srv://dbUser:kil,ji8oku@cluster0.wszic.mongodb.net/meubd?retryWrites=true&w=majority';
+const urilocal = 'mongodb://localhost:27017';
 
 async function main() {
     try {
