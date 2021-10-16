@@ -1,48 +1,57 @@
-import { MongoClient, ObjectId } from 'mongodb';
-import { Pessoa } from './pessoa';
+import { MongoClient, ObjectId } from "mongodb";
+import { Pessoa } from "./pessoa";
 
-const uri = 'mongodb+srv://dbUser:kil,ji8oku@cluster0.wszic.mongodb.net/meubd?retryWrites=true&w=majority';
+const uri = "mongodb+srv://dbUser:bruno2308@cluster0.yoorm.mongodb.net/Teste?retryWrites=true&w=majority";
 const cliente = new MongoClient(uri);
 
+// Se conecta no banco de dados, se dar erro, a função imprime o erro (em ambos casos, a conexão com o banco é fechada)
 async function main() {
-    try {
-        await cliente.connect();
-        console.log('Conectado ao MongoDb Atlas');
+  try {
+    await cliente.connect();
+    console.log("Conectado ao MongoDB Atlas");
 
-        const basededados = cliente.db('meubd');
-        const colecao = basededados.collection<Pessoa>('pessoas');
+    const baseDeDados = cliente.db("Teste");
+    const colecao = baseDeDados.collection<Pessoa>("pessoas");
+
+    const pessoa: Pessoa = {
+      nome: "João",
+      idade: 20,
+    };
+
+    // Adicionar na coleção (CREATE)
+    const resultado = await colecao.insertOne(pessoa);
+    console.log(`Inserido: ${resultado.insertedId}`);
+
+    // Procurar elementos da coleção (READ)
+    const pessoas = await colecao.find().toArray();
+    console.log("Resultado da consulta:");
+    console.log(pessoas);
+
+    // Filtrando pessoas com menos de 18 anos (READ)
+    const numero = await colecao.find({ idade: { $lte: 18 } }).count();
+    console.log("Resultado da consulta:");
+    console.log(numero);
+
+    // Atualizar elementos da coleção (UPDATE)
+    const resultadoAlteracao = await colecao.updateOne(
+      { _id: new ObjectId("6168867e4a65d910c5db798a") }, // Documento que deseja alterar
+      { $set: { idade: 18 } } // O que deseja alterar do documento, neste caso a idade que era 19, agora será atualizada para 18
+    );
+    console.log("Resultado da alteração:");
+    console.log(resultadoAlteracao.modifiedCount);
+
+    // Deletar elementos da coleção (DELETE)
+    const resultadoExclusao = await colecao.deleteOne({ _id: new ObjectId("61688f044a65d910c5db798b")});
+    console.log("Resultado da remoção:"); 
+    console.log(resultadoExclusao.deletedCount);
     
-        /*
-        const pessoa: Pessoa = {
-            nome: 'João',
-            idade: 20
-        };
-        const resultado = await colecao.insertOne(pessoa);
-        console.log(`Inserido: ${resultado.insertedId}`);
-        */
+  } catch (err) {
+    console.log("Falha de acesso ao banco de dados:");
+    console.log(err);
 
-        const pessoas = await colecao.find().toArray();
-        console.log('Resultado da consulta:');
-        console.log(pessoas);
-
-        const resultadoAlteracao = await colecao.updateOne({ _id : new ObjectId('616884326e1a81282ac2a1ee')}, { $set: { idade: 18 } });
-        console.log('Resultado da alteração:');
-        console.log(resultadoAlteracao.modifiedCount);
-
-        const numero = await colecao.find({idade: {$lte: 18}}).count();
-        console.log('Resultado da consulta:');
-        console.log(numero);
-
-        const resultadoExclusao = await colecao.deleteOne({ _id : new ObjectId('61688ef26e1a81282ac2a1ef')});
-        console.log('Resultado da exclusão:');
-        console.log(resultadoExclusao.deletedCount);
-
-    } catch (error) {
-        console.log('Falha de acesso ao BD:');
-        console.error(error);
-    } finally {
-        await cliente.close();
-    }
+  } finally {
+    await cliente.close();
+  }
 }
 
 main();
