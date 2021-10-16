@@ -1,15 +1,15 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
 
 export interface Pessoa {
-    nome: string;
-    idade: number;
-    email?: string;
+  nome: string;
+  idade: number;
+  email?: string; // O '?' indica que é uma propriedade opcional, podendo ser undefined
 }
 
 export const PessoaSchema = new Schema<Pessoa>({
-    nome: {type: String, required: true, minlength: 1, maxlength: 50},
-    idade: {type: Number, required: true, min: 0},
-    email: String
+  nome: { type: String, required: true, minlength: 1, maxlength: 50 },
+  idade: { type: Number, required: true, min: 0 },
+  email: String,
 });
 
-export const PessoaModel = model<Pessoa>('Pessoa', PessoaSchema, 'pessoas');
+export const PessoaModel = model<Pessoa>("Pessoa", PessoaSchema, "pessoas");
