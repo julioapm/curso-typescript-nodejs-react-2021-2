@@ -2,7 +2,8 @@ import { connect, disconnect } from 'mongoose';
 import * as AutorRepositorio from './persistencia/autorRepositorio';
 import * as LivroRepositorio from './persistencia/livroRepositorio';
 
-const uri = 'mongodb+srv://dbUser:kil,ji8oku@cluster0.wszic.mongodb.net/meubd?retryWrites=true&w=majority';
+//const uri = 'mongodb+srv://dbUser:kil,ji8oku@cluster0.wszic.mongodb.net/meubd?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://fabio:2010@cluster0.u9ema.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 async function main() {
     try {
@@ -18,6 +19,17 @@ async function main() {
         console.log('Buscando autores...');
         let autores = await AutorRepositorio.buscar();
         autores.forEach(autor => console.log(autor));
+
+        //fabio jr
+        console.log('Buscando autores primeiro_nome...');
+        let autoresPrimeiroNome = await AutorRepositorio.buscarPrimeiro();
+        autoresPrimeiroNome.forEach(autor => console.log(autor));
+
+        console.log('Alterando autores');
+        let alteraAutores = await AutorRepositorio.alterar('6169d7bf6b069e1d75df79f2','Marc','Luis');
+        alteraAutores.forEach(autor => console.log(autor));
+
+        //fim
         /*
         let l1 = await LivroRepositorio.criar({
             titulo: 'Mongoose com Node.js',
