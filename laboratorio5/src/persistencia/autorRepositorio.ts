@@ -6,6 +6,6 @@ export async function criar(autor: Autor): Promise<Autor> {
 }
 
 export async function buscar(): Promise<Autor[]> {
-    let consulta = AutorModel.find().sort('ultimo_nome');
+    let consulta = AutorModel.find().sort("ultimo_nome");
     return consulta.exec(); //retorna uma Promise
 }
