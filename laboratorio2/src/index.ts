@@ -1,22 +1,18 @@
 //Exercício 1
-function imprimirParesWhile() {
-    let inicio = 0;
-    let fim = 10;
-    while (inicio <= fim) {
-        if (inicio % 2 == 0) {
-            console.log(inicio);
+function imprimirIntervalofor(ini: number, fim: number) {
+    for (; ini < fim; ini++) {
+        if (ini > 1 && ini % 2 == 0) {
+            console.log(ini)
         }
-        inicio++;
     }
 }
-
-function imprimirParesFor() {
-    let inicio = 0;
-    let fim = 10;
-    for (let valor = inicio; valor <= fim; valor++) {
-        if (valor % 2 == 0) {
-            console.log(valor);
+function imprimirIntervalowhile(ini: number, fim: number) {
+    while (ini < fim) {
+        if (ini % 2 == 0) {
+            console.log(ini)
+            ini++
         }
+        ini++
     }
 }
 
