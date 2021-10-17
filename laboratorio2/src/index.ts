@@ -27,40 +27,31 @@ function loopInfinito() {
 //Isso se deve à representação de ponto flutuante para o tipo number possuir arredondamento.
 
 //Exercício 3
-function min(x: number, y: number): number {
-    if (x < y) {
-        return x;
-    } else {
-        return y;
-    }
+function min(x: number, y: number) {
+    return x > y ? y : x;
 }
 
 //Exercício 4
 function pow(x: number, y: number): number {
-    let resultado = 1;
-    for (let i = 0; i < y; i++) {
-        resultado *= x;
+    let result = 1;
+    for (let cont = 0; cont < y; cont++) {
+        result = result * x;
     }
-    return resultado;
-}
-
-function powRecursivo(x: number, y: number): number {
-    if (y == 0) {
-        return 1;
-    } else {
-        return x * powRecursivo(x, y - 1);
-    }
+    return result;
 }
 
 //Exercício 5
-function toMaiusculaPrimeira(s: string): string {
-    return s.charAt(0).toUpperCase() + s.slice(1);
+function toMaiusculaPrimeira(s: string) {
+    if (s != undefined) {
+        Array.from(s)
+        return s[0].toUpperCase() + s.slice(1).toLowerCase()
+    }
 }
 
 //Exercício 6
-function getMax(array: number[]): number {
-    let maior = array[0];
-    for (let valor of array) {
+function getMax(arr: number[]): number {
+    let maior = arr[0];
+    for (let valor of arr) {
         if (valor > maior) {
             maior = valor;
         }
@@ -69,20 +60,20 @@ function getMax(array: number[]): number {
 }
 
 //Exercício 7
-function frequencia(array: number[]): Map<number,number> {
-    let contagem = new Map<number,number>();
+function frequencia(array: number[]): Map<number, number> {
+    let contagem = new Map<number, number>();
     for (let valor of array) {
         if (contagem.has(valor)) {
-            contagem.set(valor, contagem.get(valor)!+1);
+            contagem.set(valor, contagem.get(valor)! + 1);
         } else {
-            contagem.set(valor,1);
+            contagem.set(valor, 1);
         }
     }
     return contagem;
 }
 
-function frequenciaV2(array: number[]): Map<number,number> {
-    return array.reduce((contagem, valor) => 
-    contagem.set(valor, (contagem.get(valor)||0)+1), 
-    new Map<number,number>());
+function frequenciaV2(array: number[]): Map<number, number> {
+    return array.reduce((contagem, valor) =>
+        contagem.set(valor, (contagem.get(valor) || 0) + 1),
+        new Map<number, number>());
 }
