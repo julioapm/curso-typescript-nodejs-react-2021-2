@@ -16,10 +16,19 @@ async function main() {
         console.log(`Autor inserido: ${a2}`);*/
         
         console.log('Buscando autores...');
-        let autores = await AutorRepositorio.buscar('Doe');
+        let autoresUltimoNome = await AutorRepositorio.buscarPorUltimoNome('Doe');
         //autores.forEach(autor => console.log(autor));
-        console.log(autores);
+        console.log(autoresUltimoNome);
+        let autoresPrimeiroNome = await AutorRepositorio.buscarPorPrimeiroNome('Mary');
+        console.log(autoresPrimeiroNome);
 
+        let alterandoAutor = await AutorRepositorio.alterarAutor("6169d73332476a9d1876b06d", "Beatriz", "Costa");
+        let autoresPrimeiroNome2 = await AutorRepositorio.buscarPorPrimeiroNome('Beatriz');
+        console.log(autoresPrimeiroNome2);
+
+        let alterandoAutorUpdate = await AutorRepositorio.alterarAutorUpdate({primeiro_nome: 'John'}, {primeiro_nome: 'Liz'});
+        let autoresPrimeiroNome3 = await AutorRepositorio.buscarPorPrimeiroNome('Liz');
+        console.log(autoresPrimeiroNome3);
 
        /* let livro1 = await LivroRepositorio.criar({titulo: "Node.js com Mongoose", autores: [autores[0], autores[1]]});
         console.log(livro1);*/
