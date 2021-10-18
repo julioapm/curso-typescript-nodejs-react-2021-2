@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId } from 'mongodb';
 import { Pessoa } from './pessoa';
 
-const uri = 'mongodb+srv://dbUser:kil,ji8oku@cluster0.wszic.mongodb.net/meubd?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://laranjinha:oRange@cluster0.ooj0o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const cliente = new MongoClient(uri);
 
 async function main() {
@@ -12,30 +12,25 @@ async function main() {
         const basededados = cliente.db('meubd');
         const colecao = basededados.collection<Pessoa>('pessoas');
     
-        /*
-        const pessoa: Pessoa = {
-            nome: 'João',
+        
+        /*const pessoa: Pessoa = {
+            nome: 'Daniel',
             idade: 20
         };
-        const resultado = await colecao.insertOne(pessoa);
-        console.log(`Inserido: ${resultado.insertedId}`);
-        */
 
-        const pessoas = await colecao.find().toArray();
-        console.log('Resultado da consulta:');
+        const resultado = await colecao.insertOne(pessoa);*/
+        
+        const numero = await colecao.find( {idade: {$lte: 20}}).count();
+        console.log(numero);
+        
+        const resultadoAlteracao = await colecao.updateOne({_id: new ObjectId("616b90c9cb7b9cf5ac6dd2ad")}, {$set: {idade: 18}});
+        console.log(resultadoAlteracao.modifiedCount);
+        
+        const pessoas = await  colecao.find().toArray();
         console.log(pessoas);
 
-        const resultadoAlteracao = await colecao.updateOne({ _id : new ObjectId('616884326e1a81282ac2a1ee')}, { $set: { idade: 18 } });
-        console.log('Resultado da alteração:');
-        console.log(resultadoAlteracao.modifiedCount);
-
-        const numero = await colecao.find({idade: {$lte: 18}}).count();
-        console.log('Resultado da consulta:');
-        console.log(numero);
-
-        const resultadoExclusao = await colecao.deleteOne({ _id : new ObjectId('61688ef26e1a81282ac2a1ef')});
-        console.log('Resultado da exclusão:');
-        console.log(resultadoExclusao.deletedCount);
+        const resultadoRemocao = await colecao.deleteOne({_id: new ObjectId("616b90c9cb7b9cf5ac6dd2ad")});
+        console.log(resultadoRemocao.deletedCount);
 
     } catch (error) {
         console.log('Falha de acesso ao BD:');
