@@ -12,13 +12,13 @@ export async function buscar(): Promise<Autor[]> {
 
 //3a Retornar array com autores com último nome informado
 export async function buscarPorUltimoNome(ultimo_nome: string): Promise<Autor[]> {
-    let consulta_ultimo = AutorModel.find().where('ultimo_nome').equals(ultimo_nome);
+    let consulta_ultimo = AutorModel.where('ultimo_nome').equals(ultimo_nome);
     return consulta_ultimo.exec(); //retorna uma Promise
 }
 
 //3b Retornar array com autores com primeiro nome informado
 export async function buscarPorPrimeiroNome(primeiro_nome: string): Promise<Autor[]> {
-    let consulta_primeiro = AutorModel.find().where('primeiro_nome').equals(primeiro_nome);
+    let consulta_primeiro = AutorModel.where('primeiro_nome').equals(primeiro_nome);
     return consulta_primeiro.exec();
 
 }
