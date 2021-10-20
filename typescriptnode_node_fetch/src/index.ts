@@ -6,6 +6,11 @@ async function main() {
     try {
         const resposta = await fetch(`${uriBase}/posts`);
         if (resposta.ok) {
+           // const dadostexto = await resposta.text();
+            const dadosjson = await resposta.json();
+            console.log('Dados: ');
+            console.log(dadosjson);
+            //console.log(dadosjson.length);
             
         } else {
             console.log('GET status: ', resposta.status);
