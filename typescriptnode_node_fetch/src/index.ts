@@ -19,7 +19,7 @@ async function main() {
             console.log('GET statusText: ', resposta.statusText);
         }*/
         //Realizar um POST
-        let post: PostDTO = {
+        /*let post: PostDTO = {
             id: 1,
             userId: 1,
             title: "Bechamel",
@@ -40,10 +40,23 @@ async function main() {
         } else {
             console.log('PUT status: ', resposta.status);
             console.log('PUT statusText: ', resposta.statusText);
+        }*/
+        //Realizar um DELETE para
+        let id = 1;
+        const resposta = await fetch(`${uriBase}/posts/${id}`, {
+            method: 'DELETE'
+        });
+         if (resposta.ok) {
+            console.log('DELETE realizado com sucesso.')
+
+            
+        } else {
+            console.log('DELETE status: ', resposta.status);
+            console.log('DELETE statusText: ', resposta.statusText);
         }
         
     } catch (error) {
-        console.log('Falha no acesso ao wen service: ')
+        console.log('Falha no acesso ao web service: ')
         console.log(error);
     }
 
