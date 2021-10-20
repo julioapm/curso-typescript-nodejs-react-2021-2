@@ -19,7 +19,8 @@
   },
   "description": "",
   "dependencies": {
-    "node-fetch": "^3.0.0"
-  }, 
+    "@types/node-fetch": "^2.5.12",
+    "node-fetch": "^2.6.5"
+  },
   "type": "module"
 }
