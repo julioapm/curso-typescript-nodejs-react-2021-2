@@ -9,6 +9,9 @@ export async function buscarTodos(): Promise<Livro[]> {
     return LivroModel.find().populate('autores').exec();
 }
 
+export async function buscarPorIsbn(isbn: string): Promise<Livro|null> {
+    return LivroModel.find().populate('autores').exec();
+}
 //FABIOJR
 export async function buscarLivrosAutor(idAutor:string): Promise<Livro[]> {
     let consulta = LivroModel.where('autores').equals(idAutor).populate('autores');

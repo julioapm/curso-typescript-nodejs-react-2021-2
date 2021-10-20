@@ -22,7 +22,20 @@ async function main() {
         let autores = await AutorRepositorio.buscar();
         autores.forEach(autor => console.log(autor));
 
+        /*
+        let autorPrimeiroNome = await AutorRepositorio.buscarPorPrimeiroNome('John');
+        autorPrimeiroNome.forEach(autor => console.log(autorPrimeiroNome));
+        */
+
+        let livros = await LivroRepositorio.buscarTodos();
+        const emprestimo = await EmprestimoRepositorio.criar({
+            livro: livros[0],
+            dataRetirada: new Date(2021,10,18),
+            dataEntrega: new Date(2021,10,25)
+        });
+
         //fabio jr//////////////////////////////////////////////////////////
+        /*
         console.log('Buscando autores primeiro_nome...');
         let autoresPrimeiroNome = await AutorRepositorio.buscarPrimeiro();
         autoresPrimeiroNome.forEach(autor => console.log(autor));
@@ -45,6 +58,7 @@ async function main() {
         let e1 = await EmprestimoRepositorio.criar({livro: _id, dataRetirada: data, dataEntrega: dtEntrega});
         console.log(`Empréstimo inserido: ${e1}`);
 
+
         console.log('Buscando emprestimos...');
         let emprestimos = await EmprestimoRepositorio.buscarTodos();
         emprestimos.forEach(emprestimo => console.log(emprestimo));
@@ -60,20 +74,21 @@ async function main() {
         let alteraEmprestimos = await EmprestimoRepositorio.alterar(_idalt,_idaltLivro, dtAlterada ,dtEntregaalt);
         alteraEmprestimos.forEach(emprestimo => console.log(emprestimo));
 
-        
+        */
         //fim
         /*
         let l1 = await LivroRepositorio.criar({
+            isbn: 'liv123',
             titulo: 'Mongoose com Node.js',
             autores: [autores[0], autores[1]]
         });
         console.log(`Livro inserido: ${l1}`);
-        */
+        
 
         console.log('Buscando livros...');
         let livros = await LivroRepositorio.buscarTodos();
         livros.forEach(livro => console.log(livro));
-
+        */
     } catch (error) {
         console.log(`Erro: ${error}`);
     } finally {

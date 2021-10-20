@@ -11,6 +11,12 @@ export async function buscar(): Promise<Autor[]> {
     return consulta.exec(); //retorna uma Promise
 }
 
+export async function buscarPorPrimeiroNome(nome: string): Promise<Autor[]>{
+    let consulta = AutorModel.where('primeiro_nome').equals(nome);
+    //let consulta = AutorModel.where('primeiro_nome').regex(`/^${nome}/i`)
+    return consulta.exec();
+}
+
 //FABIOJR
 export async function buscarPrimeiro(): Promise<Autor[]> {
     let consulta = AutorModel.find().sort('primeiro_nome');
