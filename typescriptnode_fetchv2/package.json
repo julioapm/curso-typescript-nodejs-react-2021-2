@@ -22,7 +22,7 @@
   "homepage": "https://github.com/julioapm/teste#readme",
   "devDependencies": {
     "@types/node": "^16.10.3",
-    "@types/node-fetch": "^3.0.3",
+    "@types/node-fetch": "^2.5.12",
     "nodemon": "^2.0.13",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
