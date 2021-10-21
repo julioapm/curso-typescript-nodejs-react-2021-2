@@ -5,7 +5,7 @@ async function main() {
     const uriBase = 'https://jsonplaceholder.typicode.com';
     try {
         //Realizar um GET
-        /*
+        
         let id = 1;
         const resposta = await fetch(`${uriBase}/posts/${id}`);
         if (resposta.ok) {
@@ -16,6 +16,8 @@ async function main() {
             console.log('GET status:', resposta.status);
             console.log('GET statusText:', resposta.statusText);
         }
+        /*
+
         */
         //Realizar um POST
         /*
@@ -65,6 +67,8 @@ async function main() {
         }
         */
         //Realizar um DELETE
+
+        /*
         let id = 1;
         const resposta = await fetch(`${uriBase}/posts/${id}`, {
             method: 'DELETE'
@@ -75,6 +79,7 @@ async function main() {
             console.log('DELETE status:', resposta.status);
             console.log('DELETE statusText:', resposta.statusText);
         }
+        */
     } catch (error) {
         console.log('Falha no acesso ao web service:');
         console.log(error);
