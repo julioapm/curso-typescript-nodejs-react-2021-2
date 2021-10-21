@@ -1,0 +1,33 @@
+{
+  "name": "teste",
+  "version": "1.0.0",
+  "description": "Repositório de teste do Júlio Machado.\r Mais informação local.\r Mais informação remota.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.ts",
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julioapm/teste.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julioapm/teste/issues"
+  },
+  "homepage": "https://github.com/julioapm/teste#readme",
+  "devDependencies": {
+    "@types/node": "^16.10.3",
+    "@types/node-fetch": "^2.5.12",
+    "nodemon": "^2.0.13",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.5"
+  }
+}
