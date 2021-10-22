@@ -1,11 +1,13 @@
 import express from 'express';
 import morgan from 'morgan';
 import errorHandler from 'errorhandler';
+import cors from 'cors';
 import { json } from 'body-parser';
 import { router as aloRouter} from './routes/alo.routes';
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
+app.use(cors());
 app.use(json());
 if (process.env.NODE_ENV !== 'production') {
     app.use(morgan('dev'));
