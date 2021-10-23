@@ -24,7 +24,7 @@ export function lerCofre(nomeArquivo: string,
                 cofre.adicionar(new Moeda(m.valor, m.nome));
             });
             callback(null, cofre);
-        } catch (e:any) {
+        } catch (e: any) {
             callback(e, null);
         }
     });
