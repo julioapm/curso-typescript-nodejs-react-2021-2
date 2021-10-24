@@ -1,4 +1,4 @@
-import { EmprestimoModel } from './emprestimoModel';
+/*import { EmprestimoModel } from './emprestimoModel';
 import { Emprestimo } from '../entidades/emprestimo';
 
 export async function criar(emprestimo: Emprestimo): Promise<Emprestimo> {
@@ -7,4 +7,4 @@ export async function criar(emprestimo: Emprestimo): Promise<Emprestimo> {
 
 export async function buscarPorIsbn(isbn: string): Promise<Emprestimo[]> {
     //???
-}
+}*/
