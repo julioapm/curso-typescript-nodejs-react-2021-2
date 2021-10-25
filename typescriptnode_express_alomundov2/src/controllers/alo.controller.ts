@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { validationResult } from 'express-validator';
 
 export function getAlo(req: Request, res: Response) {
     res.send('Alô, Mundo!');
@@ -15,6 +16,16 @@ export function postAlo(req: Request, res: Response) {
         res.send(`Alô, ${nome}!`);
     } else {
         res.status(400).send('Nome é obrigatório');
+    }
+}
+
+export function postAloValidado(req: Request, res: Response) {
+    const erros = validationResult(req);
+    if (!erros.isEmpty()) {
+        res.status(400).json({erros: erros.array()});
+    } else {
+        const {nome} = req.body;
+        res.send(`Alô, ${nome}!`);
     }
 }
 
