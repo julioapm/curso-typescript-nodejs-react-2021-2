@@ -1,4 +1,4 @@
-import { somar } from './calculadora';
+import { dobrar, somar, somarAsync, stringBinParaNumber } from './calculadora';
 
 describe('somar', () => {
     test('1 + 2 é igual a 3', () => {
@@ -9,3 +9,19 @@ describe('somar', () => {
             expect(somar(x, y)).toBe(r);
         });
 });
+
+describe('somarAsync', () =>{
+    test('1 + 1 é igual 2', async () => {
+        const resultado = await somarAsync(1, 1);
+        expect(resultado).toBe(2);
+    });
+});
+
+describe('stringBinParaNumber', () =>{
+    test('abc gera exceção Error', () => {
+        expect(() => {
+            stringBinParaNumber('abc');
+        }).toThrow(Error);
+    });
+});
+
