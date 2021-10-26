@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import fetch from 'node-fetch';
  
 async function main() {
     const uriBase = 'https://jsonplaceholder.typicode.com';
