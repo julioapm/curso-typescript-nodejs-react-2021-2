@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -r dotenv/config src/index.ts",
+    "build": "tsc",
     "start:tsnode": "ts-node -r dotenv/config src/index.ts",
-    "start:node": "npm run build && node -r dotenv/config dist/index.js",
-    "build": "tsc"
+    "start:node": "npm run build && node -r dotenv/config dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,9 @@
     "@types/express": "^4.17.13",
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.10.2",
+    "@types/passport": "^1.0.7",
+    "@types/passport-jwt": "^3.0.6",
+    "@types/passport-local": "^1.0.34",
     "@types/restify": "^8.5.2",
     "nodemon": "^2.0.13",
     "ts-node": "^10.2.1",
@@ -29,7 +32,11 @@
     "dotenv": "^10.0.0",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
+    "express-validator": "^6.13.0",
     "morgan": "^1.10.0",
+    "passport": "^0.5.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "restify": "^8.6.0"
   }
 }
