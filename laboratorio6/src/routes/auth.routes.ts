@@ -5,4 +5,4 @@ import * as AuthController from '../controllers/auth.controller'
 export const router = Router();
 export const path = '/auth';
 
-router.post(`${path}/login`, );
+router.post(`/login`, AuthController.login);
