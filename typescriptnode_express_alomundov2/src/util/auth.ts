@@ -15,3 +15,17 @@ passport.use('login', new LocalStrategy((user, passwd, done) => {
     return done(undefined, {user: user, passwd: passwd});
 }));
 
+const JWTStrategy = passportJWT.Strategy;
+
+passport.use('jwt', new JWTStrategy({
+    secretOrKey: 'minha-chave-secreta-obtida-arquivo-configuracao-na-producao',
+    jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken()
+    },
+    (payload, done) => {
+        try {
+            return done(undefined, payload.user);
+        } catch (error) {
+            done(error);
+        }
+    }
+));
