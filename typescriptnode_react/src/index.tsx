@@ -1,17 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { AloComponenteClasse } from './aloComponenteClasse';
+import { AloComponenteFuncao } from './aloComponenteFuncao';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const nome = 'Fabio';
+const elemento = (<h1>Alô, {nome}!</h1>);
+const elemento2 = (<AloComponenteFuncao nome = 'Fabio'/>)
+const elemento3 = (<AloComponenteClasse nome = 'Fábio'/>);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(elemento, document.getElementById('alo1'));
+//ReactDOM.render(AloComponenteFuncao(), document.getElementById('alo2'));
+ReactDOM.render(elemento2, document.getElementById('alo2'));
+ReactDOM.render(elemento3, document.getElementById('alo3'));
+
