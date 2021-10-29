@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { AloComponenteFuncao } from './aloComponenteFuncao';
 import { AloComponenteClasse } from './aloComponenteClasse';
 
