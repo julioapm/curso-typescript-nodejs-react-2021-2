@@ -1,4 +1,47 @@
-import passport from 'passport';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import passport from 'passport';
 import passportLocal from 'passport-local';
 import passportJWT from 'passport-jwt';
 
@@ -29,3 +72,4 @@ passport.use('jwt', new JWTStrategy({
         }
     }
 ));
+*/
