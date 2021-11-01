@@ -2,9 +2,10 @@ import { Conversor } from '../negocio/conversor';
 import { getConversao } from './conversor.controller';
 import {ConversorDTO } from './conversor.dto'
 import supertest from 'supertest';
+import app from '../app';
 
 describe('conversor.controller', () => {
-    describe('getConversao() unitário', () => {
+    describe('GET /api/conversor?moeda=USD&quantidade=1 getConversao() unitário', () => {
         const mockConversor = jest
         .spyOn(Conversor, 'converter')
         .mockResolvedValue(5.75)
@@ -13,8 +14,12 @@ describe('conversor.controller', () => {
             moeda_destino: 'BRL',
             valor_conversao: 5.64
         }
-        test('GET /api/conversor?moeda=USD&quantidade=1'/*deve retornar conversão de 1USD para BRL'*/, async () => {
-            const resultado = await getConversao();
+        test('deve retornar conversão de 1 USD para BRL', async () => {
+           const result = await supertest(app).get('/api/conversor?moeda=USD&quantidade=1');
+           expect(result.status).toBe(200);
+           expect(result.body).toEqual(resultadoEsperado);
+           expect(mockConversor).toHaveBeenCalledWith('USD', 1);
+
         })
     })
 })

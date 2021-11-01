@@ -1,29 +1,29 @@
 import {Moeda} from "../entidades/moeda";
 import { MoedaModel } from './moedaModel';
 import { MoedaRepositorio } from './moedaRepositorio';
-import * as dbhandler from '../util/dbhandler';
+import dbhandler from '../util/dbhandler';
 
+jest.setTimeout(600000);
 //Conectar com o banco de dados antes de qualquer teste
 beforeAll(async () => {
-    jest.setTimeout(600000);
-    await dbhandler.connect();
+    await dbhandler.open();//connect();
 });
 
 //Limpar o banco de dados depois de cada teste
 afterEach(async () => {
-    await dbhandler.clearDatabase();
+    await dbhandler.clear();//clearDatabase();
 });
 
 //Desconectar do banco de dados após todos os testes
 afterAll(async () => {
-    await dbhandler.disconnect();
+    await dbhandler.close();//disconnect();
 })
 
 describe('MoedaRepositorio', () => {
     const moedaDeTeste: Moeda = {
             codigo: 'USD',
             nome: 'Dólar dos EUA',
-            cotacao: 5.68
+            cotacao: 5.64
         };
     describe('criar() integração', () => {
         test('deve inserir moeda sem erro', async () => {
@@ -56,7 +56,7 @@ async function seedMoedas() {
     await MoedaModel.create({
          codigo: 'USD',
          nome: 'Dólar dos EUA',
-         cotacao: 5.68
+         cotacao: 5.64
     })
     await MoedaModel.create({
          codigo: 'EUR',
