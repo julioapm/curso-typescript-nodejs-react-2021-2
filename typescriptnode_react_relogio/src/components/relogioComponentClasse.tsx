@@ -15,7 +15,7 @@ export default class RelogioClasse extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <h1>Relógio:</h1>
+        <h1>Relógio utilizando Classes:</h1>
         <h2>{this.state.data.toLocaleTimeString()}</h2>
       </div>
     );
