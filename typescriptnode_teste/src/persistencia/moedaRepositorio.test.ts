@@ -43,14 +43,15 @@ describe('MoedaRepositorio', () => {
             const moedas = await MoedaRepositorio.buscar();
             expect(moedas).toBeDefined();
             expect(moedas).toHaveLength(0);
-       })
+       });
         test('deve retornar uma coleção com 2 elementos', async() => {
+            await seedMoedas();
             const moedas = await MoedaRepositorio.buscar();
             expect(moedas).toBeDefined();
             expect(moedas).toHaveLength(2);
-       })
-    })
-})
+       });
+    });
+});
 
 async function seedMoedas() {
     await MoedaModel.create({

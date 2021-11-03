@@ -8,10 +8,10 @@ describe('conversor.controller', () => {
     describe('GET /api/conversor?moeda=USD&quantidade=1 getConversao() unitário', () => {
         const mockConversor = jest
         .spyOn(Conversor, 'converter')
-        .mockResolvedValue(5.75)
+        .mockResolvedValue(5.64)
         const resultadoEsperado: ConversorDTO = {
-            moeda_origem: 'USD',
-            moeda_destino: 'BRL',
+            moeda_origem: 'BRL',
+            moeda_destino: 'USD',
             valor_conversao: 5.64
         }
         test('deve retornar conversão de 1 USD para BRL', async () => {

@@ -16,6 +16,6 @@ export async function buscarLivroAutor(ObjectId: string): Promise<Livro[]> {
     return consulta.exec(); //retorna uma Promise
 }
 
-export async function buscaPorIsbn(isbn: string): Promise<Livro|null> {
+/*export async function buscaPorIsbn(isbn: string): Promise<Livro|null> {
     return LivroModel.findOne{{isbn}}.populate({path:'autores', model:AutorModel}).exec();
-}
+}*/
