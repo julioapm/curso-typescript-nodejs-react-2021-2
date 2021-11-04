@@ -6,6 +6,7 @@ const RelogioControleFuncao = () => {
     const [ligado, setLigado] = useState(false);
     //estado "data" + efeito de atualização
     const [data, setData] = useState(new Date());
+    
     useEffect(() => {
         function tick() {
             setData(new Date());
