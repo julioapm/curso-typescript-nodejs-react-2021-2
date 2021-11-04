@@ -9,7 +9,25 @@ function App() {
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState(false);
 
-  useEffect(() => {}, [url]);
+  useEffect(() => {
+    async function consultarViaCep() {
+      setErro(false);
+      setCarregando(true);
+      try {
+        const resultado = await fetch(url);
+        if (resultado.ok) {
+          const dados: Cep = await resultado.json();
+          setDados(dados);
+        } else {
+          setErro(true);
+        }
+      } catch (error) {
+        setErro(true);
+      }
+      setCarregando(false);
+    }
+    consultarViaCep();
+  }, [url]);
 
   return (
     <>
