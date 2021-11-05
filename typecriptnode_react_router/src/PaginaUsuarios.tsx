@@ -1,12 +1,34 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useSearchParams } from 'react-router-dom';
 import { getUsuarios } from './dados';
 
 export default function PaginaUsuarios() {
     let usuarios = getUsuarios();
+    let [searchParams, setSearchParams] = useSearchParams();
     return (
         <>
+            <input
+                type="search"
+                value={searchParams.get('filtro') || ''}
+                onChange={event => {
+                    let filtro = event.target.value;
+                    if (filtro) {
+                        setSearchParams({ filtro });
+                    } else {
+                        setSearchParams({});
+                    }
+                }}
+            />
             <nav>
-                {usuarios.map(usuario => (
+                {usuarios
+                .filter(usuario => {
+                    let filtro = searchParams.get('filtro');
+                    if (!filtro) {
+                        return true;
+                    }
+                    let nome = usuario.nome.toLowerCase();
+                    return nome.startsWith(filtro.toLowerCase());
+                })
+                .map(usuario => (
                     <Link
                         key={usuario.id}
                         to={`/usuarios/${usuario.id}`}
