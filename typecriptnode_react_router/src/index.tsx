@@ -19,6 +19,7 @@ ReactDOM.render(
           <Route path="usuarios" element={<PaginaUsuarios />}>
             <Route path=":usuarioId" element={<PaginaDetalheUsuario />} />
           </Route>
+          <Route path="sobre" element={<PaginaSobre />} />
           <Route path="*" element={<PaginaNaoEcontrada />} />
         </Route>
       </Routes>
