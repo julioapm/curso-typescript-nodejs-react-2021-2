@@ -9,6 +9,7 @@ function App() {
         <h1>React Router Demo</h1>
         <nav>
           <Link to="/">Principal</Link> | {' '}
+          <Link to="/usuarios">Usuários</Link> | {' '}
           <Link to="/sobre">Sobre</Link>
         </nav>
       </header>

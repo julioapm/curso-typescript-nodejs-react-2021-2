@@ -7,6 +7,8 @@ import PaginaPrincipal from './PaginaPrincipal';
 import PaginaSobre from './PaginaSobre';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PaginaUsuarios from './PaginaUsuarios';
+import PaginaDetalheUsuario from './PaginaDetalheUsuario';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,7 +16,9 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<PaginaPrincipal />}/>
-          <Route path="sobre" element={<PaginaSobre />} />
+          <Route path="usuarios" element={<PaginaUsuarios />}>
+            <Route path=":usuarioId" element={<PaginaDetalheUsuario />} />
+          </Route>
           <Route path="*" element={<PaginaNaoEcontrada />} />
         </Route>
       </Routes>
