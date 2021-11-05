@@ -2,11 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import PaginaNaoEcontrada from './PaginaNaoEcontrada';
+import PaginaPrincipal from './PaginaPrincipal';
+import PaginaSobre from './PaginaSobre';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<PaginaPrincipal />}/>
+          <Route path="sobre" element={<PaginaSobre />} />
+          <Route path="*" element={<PaginaNaoEcontrada />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
