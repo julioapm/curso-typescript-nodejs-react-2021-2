@@ -1,5 +1,6 @@
 //interfaces
 export interface Cep {
+    [x: string]: any;
     cep:         string;
     logradouro:  string;
     complemento: string;

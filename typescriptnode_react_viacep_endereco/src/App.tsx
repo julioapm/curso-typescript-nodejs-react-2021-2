@@ -11,18 +11,16 @@ function App () {
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => {    
     async function consultarViaCep() {
       setErro(false);
       setCarregando(true);
       try {
         const resultado = await fetch(url);
-        
         if (resultado.ok) {
           const dados: Cep = await resultado.json();
           setDados(dados);
           console.log(dados);
-          
         } else {
           setErro(true);
         }
@@ -34,7 +32,6 @@ function App () {
     consultarViaCep();
   }, [url]);
 
-
   return (
     <>
       <form onSubmit={event => {
@@ -42,19 +39,22 @@ function App () {
         event.preventDefault();
       }}>
         <fieldset>
-          <legend>Busca ViaCEP Localização</legend>
+          <legend><b>Busca ViaCEP Localização</b></legend>
           <label>
-            Logradouro:
+            <b>Logradouro:</b>
           </label>
           <input type="text" required value={logradouro} onChange={event => setLogradouro(event.target.value)}/>
+          <br/>
           <label>
-            Localidade:
+            <b>Localidade:</b>
           </label>
           <input type="text" required value={localidade} onChange={event => setLocalidade(event.target.value)}/>
+          <br/>
           <label>
-            UF:
+            <b>UF:</b>
           </label>
           <input type="text" required value={uf} onChange={event => setUf(event.target.value)}/>
+          <br/>
           <button type="submit">Buscar</button>
         </fieldset>
       </form>
@@ -63,23 +63,21 @@ function App () {
         <div>Carregando...</div>
       ) : (
         dados && (
-
           <div>
-            <p>CEP: {dados.cep}</p>
-            <p>Logradouro: {dados?.logradouro}</p>
-            <p>Complemento: {dados?.complemento}</p>
-            <p>Bairro: {dados?.bairro}</p>
-            <p>Cidade: {dados?.localidade}</p>
-            <p>UF: {dados?.uf}</p>
+            {dados.map((dados:Cep) =>{
+            return(
+            <div>
+              <p><b>CEP:</b> {dados.cep}</p>
+              <p><b>Logradouro:</b> {dados.logradouro}</p>
+              <p><b>Complemento:</b> {dados.complemento}</p>
+              <p><b>Bairro:</b> {dados.bairro}</p>
+              <p><b>Cidade:</b> {dados.localidade}</p>
+              <p><b>UF:</b> {dados.uf}</p>
+              <p>---------------------------</p>
+            </div>
+            )
+          })}
           </div>
-
-
-
-
-
-
-
-       
         )
       )}
     </>
