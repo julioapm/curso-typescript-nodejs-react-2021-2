@@ -18,6 +18,7 @@ function App() {
         if (resultado.ok) {
           const dados: Cep = await resultado.json();
           setDados(dados);
+          console.log(dados);
         } else {
           setErro(true);
         }
