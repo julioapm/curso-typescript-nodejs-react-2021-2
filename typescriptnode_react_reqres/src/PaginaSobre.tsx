@@ -1,3 +1,4 @@
+
 export default function PaginaSobre() {
 
   const qtResultadoPorPagina= 4;
@@ -145,4 +146,5 @@ export default function PaginaSobre() {
 
    )
  
+  
 }
