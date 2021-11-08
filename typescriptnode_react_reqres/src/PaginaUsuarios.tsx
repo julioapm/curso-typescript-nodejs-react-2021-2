@@ -25,7 +25,7 @@ export default function PaginaUsuarios() {
                     if (!filtro) {
                         return true;
                     }
-                    let nome = usuario.nome.toLowerCase();
+                    let nome = usuario.first_name.toLowerCase();
                     return nome.startsWith(filtro.toLowerCase());
                 })
                 .map(usuario => (
@@ -34,7 +34,7 @@ export default function PaginaUsuarios() {
                         to={`/usuarios/${usuario.id}`}
                         style={{ display: 'block', margin: '1rem 0' }}
                     >
-                        {usuario.nome}
+                        {usuario.first_name}
                     </Link>
                 ))}
             </nav>

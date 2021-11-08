@@ -1,34 +1,27 @@
-export const UUID = (): string => {
-    let result = '';
-    const characters =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    for (let i = 0; i < 12; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-
 export interface Usuario {
-    id: string;
-    nome: string;
+    id: number;
     email: string;
+    first_name: string;
+    last_name: string;
+    avatar: string;
 }
-
-let usuarios: Usuario[] = [
-    {  id: 'u1', nome: 'João', email: 'joao@gmail.com' },
-    {  id: 'u2', nome: 'Maria', email: 'maria@gmail.com' },
-    {  id: 'u3', nome: 'José', email: 'jose@gmail.com' }
-];
+let usuarios: Usuario[];
 
 export function getUsuarios() {
     return usuarios;
 }
 
-export function getUsuario(id: string) {
+export function getUsuario(id: number) {
     return usuarios.find(u => u.id === id);
 }
 
-export function deleteUsuario(id: string) {
+export function deleteUsuario(id: number) {
     usuarios = usuarios.filter(u => u.id !== id);
 }
+
+async function setUsuarios  () {
+    const url = 'https://reqres.in/api/users?page=2';
+    const resultado =  await fetch(url);
+    usuarios =  await resultado.json();
+  }
+ setUsuarios();
