@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../utils/useAuth';
 
 export default function NavBar() {
-    const { authed, logout } = useAuth();
+    const { authed, user, logout } = useAuth();
     const navigate = useNavigate();
     const handleLogout = () => {
         logout();
@@ -21,6 +21,9 @@ export default function NavBar() {
                     <Link to="/protected">Protected</Link>
                 </li>
             </ul>
+            {user && (
+                <div>Olá {user.name}</div>
+            )}
             {authed && (
                 <button onClick={handleLogout}>Logout</button>
             )}

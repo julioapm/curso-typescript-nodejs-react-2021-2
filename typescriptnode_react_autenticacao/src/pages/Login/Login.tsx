@@ -6,7 +6,7 @@ export default function Login() {
     const { login } = useAuth();
     const { state } = useLocation();
     const handleLogin = async () => {
-        await login();
+        await login({email:'johdoe@gmail.com', password:'123'});
         navigate(state.path || '/protected');
     };
     //Aqui seria implementado o formulário de login
