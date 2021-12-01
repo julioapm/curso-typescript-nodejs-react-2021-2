@@ -9,6 +9,7 @@ import Home from './pages/Home/Home';
 import Public from './pages/Public/Public';
 import Login from './pages/Login/Login';
 import Protected from './pages/Protected/Protected';
+import RequireAuth from './components/routing/RequireAuth';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +20,12 @@ ReactDOM.render(
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="public" element={<Public />} />
-            <Route path="protected" element={<Protected />} />
+            <Route path="protected" element={
+              <RequireAuth>
+                <Protected />
+              </RequireAuth>
+              }
+            />
           </Route>
         </Routes>
       </AuthProvider>
