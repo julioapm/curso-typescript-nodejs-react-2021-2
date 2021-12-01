@@ -3,10 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './utils/useAuth';
+import Home from './pages/Home/Home';
+import Public from './pages/Public/Public';
+import Login from './pages/Login/Login';
+import Protected from './pages/Protected/Protected';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="public" element={<Public />} />
+            <Route path="protected" element={<Protected />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
